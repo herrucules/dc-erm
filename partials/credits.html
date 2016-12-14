@@ -1,0 +1,32 @@
+<div id="container-2" class="moveable" spellcheck="false" style="width: 43.2602%; height: 19.5822%; left: 45.6995%; top: 25.3916%; opacity: 1;" data-options="top:100%;opacity:0;index:0;label:credits;duration:0.5;ease:Expo.easeOut;target:container-2">
+    <h1>Credits<br></h1></div>
+<div id="container-7" class="moveable" style="left: 27.2262%; top: 38.8136%; width: 45.2978%; height: 7.04961%; opacity: 1;" spellcheck="false" data-options="top:100%;opacity:0;index:1;label:credits 0;duration:0.5;ease:Expo.easeOut;target:container-7;position:-=.3">
+    <p style="text-align: center;" data-mce-style="text-align: center;"><strong>Subject Matter Expert<br></strong>Marisa Karsen
+        <br>
+    </p>
+</div>
+<div id="container-4" class="moveable" style="left: 27.5862%; top: 49.2453%; width: 44.9843%; height: 7.8329%; opacity: 1;" spellcheck="false" data-options="opacity:0;top:100%;index:2;label:credits 1;duration:0.5;ease:Expo.easeOut;target:container-4;position:0.3">
+    <p style="text-align: center;" data-mce-style="text-align: center;"><strong>Instructional Designer:</strong>
+        <br>Riefni Riftianingrum
+        <br>
+    </p>
+</div>
+<div id="container-5" class="moveable" style="left: 31.5047%; top: 59.3383%; width: 37.3041%; height: 10.9661%; opacity: 1;" spellcheck="false" data-options="top:100%;opacity:0;index:3;label:credits 2;duration:0.5;ease:Expo.easeOut;target:container-5;position:-=.3">
+    <p style="text-align: center;" data-mce-style="text-align: center;"><strong>Illustrator:</strong>
+        <br>Angga Ferdiansyah
+        <br>
+    </p>
+</div>
+<script>
+var tl = new TimelineLite();
+tl.addLabel('credits');
+tl.from('#container-2', 0.5, {top:'100%',opacity:'0',ease:'Expo.easeOut'}, '+=0');
+tl.addLabel('credits 0');
+tl.from('#container-7', 0.5, {top:'100%',opacity:'0',ease:'Expo.easeOut'}, '-=.3');
+tl.addLabel('credits 1');
+tl.from('#container-4', 0.5, {opacity:'0',top:'100%',ease:'Expo.easeOut'}, '0.3');
+tl.addLabel('credits 2');
+tl.from('#container-5', 0.5, {top:'100%',opacity:'0',ease:'Expo.easeOut'}, '-=.3');
+
+interactiveApp.outAnim = null;
+</script>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Entity Relationship Modelling</title>  
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/libs/soundjs-0.6.2.min.js"></script>
+  <script src="js/libs/SCORM_API_wrapper.js"></script>
+  <script src="js/libs/preloadjs-0.6.2.min.js"></script>
+  <!-- // <script src="js/libs/interact.min.js"></script> -->
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/libs/tooltipster.bundle.min.js"></script>
+  <script src="js/libs/screenfull.min.js"></script>
+  <script src="js/libs/TabWindowVisibilityManager.min.js"></script>
+  <script src="js/libs/TweenMax.min.js"></script>
+  <script src="js/libs/sammy0.7.6.min.js"></script>
+  <script src="js/libs/flowtype.js"></script>
+</head>
+<body onunload="OnUnload()" onbeforeunload="OnUnload()">
+  <div >
+    <div id="interactive-container" style="margin:0 auto">
+      <div id="logo" class="" style="width: 18.0485%; height: 21.9104%; z-index: 1;">
+        <a href="#/"><img src="images/binus-logo.svg" alt="BINUS University"></a>
+      </div>
+      <div id="menu-icon" class="" style="width: 4.48718%; height: 7.22155%; z-index: 2; left: 92.1575%; top: 4.48384%;">
+        <img src="images/menuicon.svg" data-alt-img="images/close.svg" alt="Open menu">
+      </div>
+      <div id="menu-container" class="moveabl" style="width: 30%; background-color: #fff; box-shadow:rgb(239, 129, 35) 0px 0px 20px -3px; left:70%;z-index:1">   
+        <ul>
+          <li><a class="disabled" href="#/learning-objectives">Learning Objectives</a></li>
+          <li><a class="disabled" href="#/opening-1">Opening</a></li>
+          <li><a class="disabled" href="#/entity">Entity</a></li>
+          <li><a class="disabled" href="#/binary-relationship">Relationship</a></li>
+          <li><a class="disabled" href="#/attributes">Attributes</a></li>
+          <li><a class="disabled" href="#/multiplicity-types">Multiplicity</a></li>
+          <li><a class="disabled" href="#/assessment">Assessment</a></li>
+          <li><a class="disabled" href="#/credits">Credits</a></li>
+        </ul>     
+      </div>
+      <div id="preloader" style="z-index: 1; left: 43.8311%; top: 41.763%; width: 8.25103%; height: 16.56%;" class="moveabl">
+        <img src="images/loading-ring-alt.svg" alt="Loading..">
+      </div>
+      <div id="content"></div>
+      <div id="nav">
+        <a href="" title="Next" rel="next" id="nav-next"></a>
+        <a href="" title="Previous" rel="previous" id="nav-prev"></a>        
+      </div>
+    </div>
+  </div>
+
+  <script>
+  var appRoutes = [ 
+                  {id:'1', name:'home', url:'/', templateUrl:'partials/home.html', hidePrev:true, hideNext:true},
+                  {id:'2', name:'learning-objectives', url:'/learning-objectives', templateUrl:'partials/learning-objective.html', tracked: 10, hidePrev:true},
+                  {id:'3', name:'opening-1', url:'/opening-1', templateUrl:'partials/opening-1.html', audioURL:'sounds/04.mp3', hidePrev:true},
+                  {id:'4', name:'opening-2', url:'/opening-2', templateUrl:'partials/opening-2.html', audioURL:'sounds/05.mp3'},
+                  {id:'5', name:'erm-components', url:'/erm-components', templateUrl:'partials/erm-components.html', audioURL:'sounds/06.mp3'},
+                  {id:'6', name:'entity', url:'/entity', templateUrl:'partials/entity.html', audioURL:'sounds/07.mp3'},
+                  {id:'7', name:'binary-relationship', url:'/binary-relationship', templateUrl:'partials/binary-relationship.html', audioURL:'sounds/08.mp3'},
+                  {id:'8', name:'tenary-relationship', url:'/tenary-relationship', templateUrl:'partials/tenary-relationship.html', audioURL:'sounds/09.mp3'},
+                  {id:'9', name:'quaternary-relationship', url:'/quaternary-relationship', templateUrl:'partials/quaternary-relationship.html', audioURL:'sounds/10.mp3'},
+                  {id:'10', name:'recursive-relationship', url:'/recursive-relationship', templateUrl:'partials/recursive-relationship.html', audioURL:'sounds/11.mp3'},
+                  {id:'11', name:'attributes', url:'/attributes', templateUrl:'partials/attributes.html', audioURL:'sounds/12.mp3'},
+                  {id:'12', name:'attributes-details', url:'/attributes-details', templateUrl:'partials/attributes-details.html', audioURL:'sounds/13.mp3'},
+                  {id:'13', name:'multiplicity-types', url:'/multiplicity-types', templateUrl:'partials/multiplicity-types.html', audioURL:'sounds/14.mp3'},
+                  {id:'14', name:'multiplicity-example-1', url:'/multiplicity-example-1', templateUrl:'partials/multiplicity-example-1.html', audioURL:'sounds/16.mp3'},
+                  {id:'15', name:'multiplicity-example-2', url:'/multiplicity-example-2', templateUrl:'partials/multiplicity-example-2.html', audioURL:'sounds/17.mp3'},
+                  {id:'16', name:'multiplicity-example-3', url:'/multiplicity-example-3', templateUrl:'partials/multiplicity-example-3.html', audioURL:'sounds/18.mp3'},
+                  {id:'17', name:'multiplicity-example-4', url:'/multiplicity-example-4', templateUrl:'partials/multiplicity-example-4.html', audioURL:'sounds/19.mp3'},
+                  {id:'18', name:'assessment', url:'/assessment', templateUrl:'partials/assessment.html'},
+                  {id:'19', name:'credits', url:'/credits', templateUrl:'partials/credits.html', tracked: 10, hideNext: true}
+                 ];
+
+
+  var quizGroup = [
+  {"groupName":"default","maxTry":0,"quizes":[
+    {"quizID":"q1","page":"16"},
+    {"quizID":"q2","page":"16"}    
+    ]}
+  ];
+
+  var manifestToLoad = [    
+    // {id:'right', src:'images/right.svg', type: createjs.LoadQueue.IMAGE}
+  ];
+
+
+  </script>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

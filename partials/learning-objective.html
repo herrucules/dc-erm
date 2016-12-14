@@ -1,0 +1,36 @@
+<div id="container-0" class="moveable" spellcheck="false" style="width: 49.5298%; height: 5.74413%; left: 19.8692%; top: 24.7919%; opacity: 1;" data-options="opacity:0;left:-100%;index:1;label:container-0;duration:0.5;target:container-0;predefined:Fly in from left">
+    <p>On successful completion of this material, students will be able to: </p>
+</div>
+<div id="container-1" class="moveable" style="left: 19.73%; top: 11.6718%; width: 30.5643%; height: 10.9661%; opacity: 1;" spellcheck="false" data-options="opacity:0;index:0;label:judul;duration:0.5;target:container-1;predefined:Fade in">
+    <h1>Learning Objectives<br></h1></div>
+<div id="container-4" class="moveable" spellcheck="false" style="left: 19.8741%; top: 33.2735%; width: 4.07098%; height: 6.78261%; padding: 1% 1.2% 1.2% 1.5%; border-radius: 50%; background-color: rgb(37, 217, 218); transform: matrix(1, 0, 0, 1, 0, 0);" data-options="rotation:90;scale:0;index:2;label:no1;duration:0.5;target:container-4;predefined:Rotate &amp; zoom in">
+    <p style="text-align: center;" data-mce-style="text-align: center;"><span style="color: rgb(255, 255, 255);" data-mce-style="color: #ffffff;">1</span>
+        <br>
+    </p>
+</div>
+<div id="container-2" class="moveable" spellcheck="false" style="width: 49.5298%; height: 13.577%; left: 25.3992%; top: 33.2898%; opacity: 1;" data-options="opacity:0;left:10%;index:3;label:container-2;duration:0.5;ease:null;target:container-2">
+    <p>Explain about Entity Relationship (ER) Modelling and why we need to make Entity Relationship (ER) Modelling in design database</p>
+</div>
+<div id="container-5" class="moveable" spellcheck="false" style="left: 19.8717%; top: 44.9617%; width: 4.07098%; height: 7.13043%; padding: 1.2%; border-radius: 50%; background-color: rgb(37, 217, 218); transform: matrix(1, 0, 0, 1, 0, 0);" data-options="rotation:90;scale:0;index:4;label:no2;duration:0.5;target:container-5;predefined:Rotate &amp; zoom in">
+    <p style="text-align: center;" data-mce-style="text-align: center;"><span style="color: rgb(255, 255, 255);" data-mce-style="color: #ffffff;" mce-data-marked="1">2</span></p>
+</div>
+<div id="container-3" class="moveable" spellcheck="false" style="width: 49.5298%; height: 13.577%; left: 25.3992%; top: 44.8923%; opacity: 1;" data-options="left:10%;opacity:0;index:5;label:container-3;duration:0.5;ease:null;target:container-3">
+    <p>Create Entity Relationship (ER) Modelling completed with entity, relationship, and cardinalities</p>
+</div>
+<script>
+var tl = new TimelineLite();
+  tl.addLabel('judul');
+tl.from('#container-1', 0.5, {opacity:'0'}, '+=0');
+tl.addLabel('container-0');
+tl.from('#container-0', 0.5, {opacity:'0',left:'-100%'}, '+=0');
+tl.addLabel('no1');
+tl.from('#container-4', 0.5, {rotation:'90',scale:'0'}, '+=0');
+tl.addLabel('container-2');
+tl.from('#container-2', 0.5, {opacity:'0',left:'10%',ease:'null'}, '+=0');
+tl.addLabel('no2');
+tl.from('#container-5', 0.5, {rotation:'90',scale:'0'}, '+=0');
+tl.addLabel('container-3');
+tl.from('#container-3', 0.5, {left:'10%',opacity:'0',ease:'null'}, '+=0');
+
+interactiveApp.outAnim = null;
+</script>

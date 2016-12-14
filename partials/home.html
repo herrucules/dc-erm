@@ -1,0 +1,43 @@
+<div id="container-1" class="moveable lock" style="width: 64.8903%; height: 99.7389%; background-color: rgb(34, 198, 199); left: 0px; opacity: 1;" spellcheck="false" data-options="opacity:0;left:-100%;index:0;label:panel biru;duration:0.5;target:container-1;predefined:Fly in from left">
+    <p>
+        <br>
+    </p>
+</div>
+<div id="container-0" class="moveable" style="left: 14.1507%; top: 34.7748%; width: 43.8871%; height: 21.4099%; opacity: 1;" spellcheck="false" data-options="opacity:0;index:1;label:judul;duration:0.5;target:container-0;predefined:Fade in">
+    <h1 style="text-align: right;" data-mce-style="text-align: right;"><span style="font-size: 150%;" data-mce-style="font-size: 150%;">Entity Relationship Modelling</span><br></h1></div>
+<div id="container-2" class="moveable el-selected context-menu-disabled" style="left: 60.6583%; top: 41.7347%; width: 8.62069%; height: 14.6214%; transform: matrix(1, 0, 0, 1, 0, 0);" data-options="scale:0;index:3;label:tombol;duration:0.5;ease:Elastic.easeOut;target:container-2" spellcheck="false">
+    <p><a href="#/learning-objectives" ><img id="start" src="images/playbtn.svg" alt="playbtn.svg" data-mce-src="https://d33pcikkgoysdr.cloudfront.net/assets/user/herrucules/c2048073-4d2e-48ae-8a77-7cd18d8aa161.svg"></a></p>
+</div>
+<div id="container-3" class="moveable" style="left: 21.2774%; top: 58.4204%; width: 36.5204%; height: 6.26632%; opacity: 1;" spellcheck="false" data-options="opacity:0;index:2;label:container-3;duration:0.5;target:container-3;predefined:Fade in">
+    <p style="text-align: right;" data-mce-style="text-align: right;"><span style="font-size: 150%;" data-mce-style="font-size: 150%;">Database Systems&nbsp;</span><span style="font-size: 150%;" data-mce-style="font-size: 150%;">ISYS6277</span></p>
+</div>
+<script>
+var tl = new TimelineMax();
+  tl.addLabel('panel biru');
+tl.from('#container-1', 0.5, {opacity:'0',left:'-100%'}, '+=0');
+tl.addLabel('judul');
+tl.from('#container-0', 0.5, {opacity:'0'}, '+=0');
+tl.addLabel('container-3');
+tl.from('#container-3', 0.5, {opacity:'0'}, '+=0');
+tl.addLabel('tombol');
+tl.from('#container-2', 0.5, {scale:'0',ease:'Elastic.easeOut'}, '+=0');
+
+$('#start').on('click',function(e) {
+  var i = ic[0];
+
+  // go full-screen
+  if (screenfull.enabled) {
+    screenfull.request(i);
+  }    
+
+});
+
+// out
+  interactiveApp.outAnim = function (cb) {
+    tl = new TimelineLite();    
+    tl.to('#container-3, #container-1, #container-0, #container-2', 0.5, {left:'-100%'});    
+    tl.vars.onComplete = function() {
+      cb();      
+    };
+  }
+</script>
