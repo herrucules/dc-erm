@@ -26,7 +26,7 @@ function OnUnload()
 
 $(function() {
 
-  var preload = new createjs.LoadQueue(false);
+  var preload = new createjs.LoadQueue();
   interactiveApp.preloadjs = preload;
   preload.on('complete', handlePreloadComplete);
   $('#content, #nav-next, #nav-prev, #menu-icon, #menu-container').hide();  
@@ -47,39 +47,28 @@ $(function() {
     }
   });
   if (manifestToLoad.length) {
-    createjs.Sound.registerPlugins([createjs.HTMLAudioPlugin]);  // need this so it doesn't default to Web Audio
+    // createjs.Sound.registerPlugins([createjs.HTMLAudioPlugin]);  // need this so it doesn't default to Web Audio
     preload.installPlugin(createjs.Sound);
+    clog(manifestToLoad);
     preload.loadManifest(manifestToLoad);    
   } else {
     handlePreloadComplete(); 
   }
 
   function handleLoadedAssets () {
-    return;
     var imgs = $('#content img');
     $.each(imgs, function(index, value) {
       var obj = $(value);
-      if (obj.data('preloaded') == '1') return;      
-      var result;
-      if (result = interactiveApp.preloadjs.getResult(obj.attr('src'),true)) {
-        var img = $('<img>', {
-            src: URL.createObjectURL(result),
-            alt: obj.attr('alt')
-          })
-        obj.data('preloaded','1')
+      if (obj.data('preloaded') == '1') return;
+      $.each(manifestToLoad, function (i, v) {
+        if (obj.attr("src") == v.src) {          
+          obj.data('preloaded','1')
             .hide()
-            .after(img);
-      }
-      // $.each(manifestToLoad, function (i, v) {
-      //   if (obj.attr("src") == v.src) {          
-      //     var newAsset = interactiveApp.preloadjs.getTag(v.id);
-      //     obj.data('preloaded','1')
-      //       .hide()
-      //       .after(newAsset);
-      //     console.log(interactiveApp.preloadjs.getTag(v.id));
-      //     // newAsset.attr('alt', obj.attr('alt'));
-      //   }
-      // });
+            .after(interactiveApp.preloadjs.getResult(v.id));
+            
+          interactiveApp.preloadjs.getResult(v.id).alt = obj.attr('alt');
+        }
+      });
     });
   }
 
@@ -429,6 +418,9 @@ $(window).TabWindowVisibilityManager({
         if (interactiveApp.videoHandle) {
           interactiveApp.videoHandle.play();
         }
+        if (interactiveApp.timeline) {
+          interactiveApp.timeline.resume();
+        }
     },
     onBlurCallback: function(){
         for (var p in interactiveApp.audioHandles) {
@@ -437,6 +429,9 @@ $(window).TabWindowVisibilityManager({
         if (interactiveApp.videoHandle) {
           interactiveApp.videoHandle.pause();
         }
+        if (interactiveApp.timeline) {
+          interactiveApp.timeline.pause();
+        }  
     }
 });
 
